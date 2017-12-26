@@ -1,5 +1,4 @@
 #/usr/bin/python3
-# Created by Luis Mediavilla
 import json
 import sys
 import requests
@@ -33,8 +32,14 @@ def user(username):
         response.close
         client = clientRaw['queryResponse']['entity']
         print('-----------------------------------------------')
-        print('User: '+client[0]['clientDetailsDTO']['userName'])
-        print('Status: '+client[0]['clientDetailsDTO']['status'])
+        try:
+            print('User: '+client[0]['clientDetailsDTO']['userName'])
+        except Exception:
+            pass
+        try:        
+            print('Status: '+client[0]['clientDetailsDTO']['status'])
+        except Exception:
+            pass        
         try:
             print('IP: '+client[0]['clientDetailsDTO']['ipAddress']['address']) 
         except Exception:
@@ -43,13 +48,34 @@ def user(username):
             print('Mac: '+client[0]['clientDetailsDTO']['macAddress'])
         except Exception:
             pass
-        print('WirelessController: '+client[0]['clientDetailsDTO']['deviceName'])
-        print('Ap: '+client[0]['clientDetailsDTO']['apName'])
-        print('Location: '+client[0]['clientDetailsDTO']['location'])
-        print('SSID: '+client[0]['clientDetailsDTO']['ssid'])
-        print('Vlan: '+client[0]['clientDetailsDTO']['vlan'])
-        print('Vendor: '+client[0]['clientDetailsDTO']['vendor'])
-        print('ccxVersion: '+client[0]['clientDetailsDTO']['ccxVersion'])
+        try:
+            print('WirelessController: '+client[0]['clientDetailsDTO']['deviceName'])
+        except Exception:
+            pass
+        try:
+            print('Ap: '+client[0]['clientDetailsDTO']['apName'])
+        except Exception:
+            pass
+        try:
+            print('Location: '+client[0]['clientDetailsDTO']['location'])
+        except Exception:
+            pass
+        try:
+            print('SSID: '+client[0]['clientDetailsDTO']['ssid'])
+        except Exception:
+            pass
+        try:
+            print('Vlan: '+client[0]['clientDetailsDTO']['vlan'])
+        except Exception:
+            pass
+        try:
+            print('Vendor: '+client[0]['clientDetailsDTO']['vendor'])
+        except Exception:
+            pass
+        try:
+            print('ccxVersion: '+client[0]['clientDetailsDTO']['ccxVersion'])
+        except Exception:
+            pass
 def mac( macaddress ):
     "This prints a passed string into this function"
     requests.packages.urllib3.disable_warnings()
@@ -79,17 +105,38 @@ def mac( macaddress ):
         response.close
         client = clientRaw['queryResponse']['entity']
         print('-----------------------------------------------')
-        print('Mac: '+client[0]['clientDetailsDTO']['macAddress'])
-        print('Switch: '+client[0]['clientDetailsDTO']['deviceName'])
-        print('SwitchIp: '+client[0]['clientDetailsDTO']['deviceIpAddress']['address'])
-        print('Port: '+client[0]['clientDetailsDTO']['clientInterface'])
-        print('Vlan: '+client[0]['clientDetailsDTO']['vlan'])
-        print('Vlan Name: '+client[0]['clientDetailsDTO']['vlanName'])
+        try:
+            print('Mac: '+client[0]['clientDetailsDTO']['macAddress'])
+        except Exception:
+            pass        
+        try:
+            print('Switch: '+client[0]['clientDetailsDTO']['deviceName'])
+        except Exception:
+            pass        
+        try:
+            print('SwitchIp: '+client[0]['clientDetailsDTO']['deviceIpAddress']['address'])
+        except Exception:
+            pass        
+        try:
+            print('Port: '+client[0]['clientDetailsDTO']['clientInterface'])
+        except Exception:
+            pass        
+        try:
+            print('Vlan: '+client[0]['clientDetailsDTO']['vlan'])
+        except Exception:
+            pass        
+        try:
+            print('Vlan Name: '+client[0]['clientDetailsDTO']['vlanName'])
+        except Exception:
+            pass        
         try:
             print('Port Description: '+client[0]['clientDetailsDTO']['ifDescr'])
         except Exception:
             pass
-        print('Port Speed: '+client[0]['clientDetailsDTO']['speed'])
+        try:    
+            print('Port Speed: '+client[0]['clientDetailsDTO']['speed'])
+        except Exception:
+            pass
 if len(sys.argv) < 3:
     raise ValueError('prime.py -user/-mac followerd by user or mac, the mac in dot notation')
 if sys.argv[1] == "-user":
